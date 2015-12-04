@@ -2,6 +2,53 @@
  * [initTimer description]
  * @return {[type]} [description]
  */
+function initAdvancedTimer(time) {
+    reg.timer = game.time.create(false);
+    var _time = time || 1000;
+
+    reg.timeIndices = 0;
+    reg.timeIndiceLimit = 5;
+    reg.timer.loop(_time, function () {
+        // update or create something based on timer
+        launchPresent();
+        reg.timeIndices += 1;
+        //window.console.log("creating present");
+        if (reg.timeIndices === reg.timeIndiceLimit) {
+            reg.timer.stop();
+            game.time.events.remove(reg.timer);
+
+            var _time = time - 150 < 450 ? 450 : time - 150;
+            initTimer(_time);
+            return false;
+        }
+    }, this, []);
+
+    reg.timer.start();
+    return reg.timer;
+}
+
+/**
+ * [removeTimer description]
+ * @return {[type]} [description]
+ */
+function removeAdvancedTimer() {
+    gameStop = true;
+
+    if(reg.timer){
+        reg.timer.stop();
+    }
+
+    // clear timer
+    game.time.events.remove(reg.timer);
+
+    // do something when all timers stop ex:
+    // saveScore();
+}
+
+/**
+ * [initTimer description]
+ * @return {[type]} [description]
+ */
 function initTimer(time) {
     reg.timer = {};
     var _time = time || 4000;

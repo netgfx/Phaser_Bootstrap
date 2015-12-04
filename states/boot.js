@@ -17,7 +17,7 @@ GAME.Boot.prototype = {
             this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.game.scale.pageAlignHorizontally = true;
             this.game.scale.pageAlignVertically = true;
-            this.game.scale.setScreenSize(true);
+            //this.game.scale.setScreenSize(true);
         } else {
             /*this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.game.scale.pageAlignHorizontally = true;
@@ -40,7 +40,7 @@ GAME.Boot.prototype = {
             //this.scale.hasResized.add(this.gameResized, this);
             //this.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
             //this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
-            this.scale.setScreenSize(true);
+            //this.scale.setScreenSize(true);
 
             var ow = parseInt(this.game.canvas.style.width, 10);
             var oh = parseInt(this.game.canvas.style.height, 10);

@@ -50,7 +50,11 @@ GAME.Preloader.prototype = {
 
 
         //this.load.audio('track', ['assets/track.mp3']);
-
+        /*
+        this.load.audio('ding', ['assets/sounds/ding.mp3']);
+        this.load.audio('song', ['assets/sounds/song.mp3']);
+        this.load.audio('gameover', ['assets/sounds/gameover.mp3']);
+        */
     },
     create: function () {
         getLocalSave();

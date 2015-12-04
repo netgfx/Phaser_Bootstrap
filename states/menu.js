@@ -14,32 +14,72 @@ GAME.Menu.prototype = {
         this.scoresButton = this.add.button((game.width/2) - 184, this.soundButton.y + 110, 'menuInfo', this.startInfo, this, 1, 0, 2);*/
 
         // sound manager
-        /*reg.track = game.add.audio('track');
-        reg.track.loop = true;
+        /*if(reg.song === undefined){
+            reg.song = game.add.audio('song');
+            reg.song.repeat = true;
+            reg.song.volume = 0.3;
+        }
 
-        if (reg.sound === true) {
-            reg.track.play();
-        }*/
+        if(reg.ding === undefined){
+            reg.ding = game.add.audio('ding');
+            reg.ding.volume = 0.5;
+        }
+
+        if (reg.sound === true && reg.song.isPlaying === false) {
+            reg.song.play();
+        }
+
+        if(reg.sound === false) {
+            this.soundButton.alpha = 0;
+            this.nosoundButton.alpha = 1;
+        }
+        */
     },
-    startGame: function() {
-        game.state.start('Levels');
+    startGame: function () {
+        game.state.start('Game');
     },
     startScores: function () {
         game.state.start('Scores');
     },
-    toggleSound: function() {
+    toggleSound: function () {
         reg.sound = (reg.sound === true) ? false : true;
 
-        if(reg.sound === false) {
-            this.soundButton.loadTexture("menuSoundOff",0);
-            reg.track.stop();
-        }
-        else {
-            this.soundButton.loadTexture("menuSoundOn",0);
-            reg.track.play();
+        if (reg.sound === false) {
+            this.soundButton.alpha = 0;
+            this.nosoundButton.alpha = 1;
+            reg.song.stop();
+        } else {
+            this.nosoundButton.alpha = 0;
+            this.soundButton.alpha = 1;
+            reg.song.play();
         }
     },
-    startInfo: function() {
-        game.state.start('Info');
+    startScores: function () {
+        game.state.start('Scores');
+    },
+    startCredits: function () {
+        game.state.start("Credits");
+    },
+    shareTwitter: function () {
+        var sharerURL = "http://twitter.com/intent/tweet?text=" + encodeURIComponent("I captured " + reg.mainScore + " presents on Present...ing! can you beat my score? http://xmas2015.7linternational.com");
+        window.open(
+            sharerURL,
+            'Twitter',
+            'width=626,height=436');
+    },
+    shareFacebook: function () {
+
+        FB.ui({
+            display: 'dialog',
+            method: "feed",
+            link: "http://xmas2015.7linternational.com",
+            /*caption: title,*/
+            description: "I captured " + reg.mainScore + " presents on Present...ing! can you beat my score? http://xmas2015.7linternational.com",
+            picture: "http://xmas2015.7linternational.com/assets/promo.png",
+            size: {width:640,height:480}, width:640, height:480
+            /*caption: "I captured " + reg.mainScore + " presents on Present...ing! can you beat my score? http://presenting.surge.sh/",*/
+        }, function (response) {
+
+        });
     }
 };

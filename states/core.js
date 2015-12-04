@@ -52,7 +52,7 @@ GAME.Main.prototype = {
     },
     update: function () {
         if (this.game.time.fps !== 0) {
-            //this.fpsText.setText(this.game.time.fps + ' FPS');
+            this.fpsText.setText(this.game.time.fps + ' FPS');
         }
 
        // UPDATE SOMETHING EACH FRAME
@@ -68,40 +68,6 @@ GAME.Main.prototype = {
 
     }
 };
-
-/**
- * [initTimer description]
- * @return {[type]} [description]
- */
-function initTimer() {
-    reg.timer = {};
-    var _time = game.rnd.integerInRange(0, 100);
-
-    reg.timer = game.time.events.loop(_time, function () {
-        // update or create something based on timer
-    }, this, []);
-
-    return reg.timer;
-}
-
-function initScoreTimer() {
-    reg.scoreTimer = {};
-
-    return reg.scoreTimer;
-}
-
-/**
- * [removeTimer description]
- * @return {[type]} [description]
- */
-function removeTimer() {
-    gameStop = true;
-    // clear timer
-    game.time.events.remove(reg.timer);
-
-    // do something when all timers stop ex:
-    // saveScore();
-}
 
 
 /**
@@ -136,187 +102,7 @@ function createHUD() {
     reg.hudGroup = hudGroup;
 }
 
-/**
- * [createModal description]
- * @param  {[type]} type [description]
- * @return {[type]}      [description]
- */
-function createModal(type) {
 
-    var modalGroup = game.add.group();
-
-    var modal = game.add.graphics(game.width, game.height);
-    modal.beginFill("0x000000", 0.7);
-    modal.x = 0;
-    modal.y = 0;
-    modal.drawRect(0, 0, game.width, game.height);
-
-    var modalPanel = game.add.image((game.width / 2 - (550 / 2)), (game.height / 2 - (400 / 2)), "modal");
-
-    if (type === "game-over") {
-        var gameLabel = this.game.add.text(0, 0, "GAME OVER", {
-            font: '46px FingerPaint-Regular',
-            fill: '#ffffff',
-            fontWeight: 'normal',
-            align: 'center'
-        });
-
-        gameLabel.update();
-        gameLabel.x = (game.width / 2) - (gameLabel.width / 2);
-        gameLabel.y = modalPanel.y + 40;
-
-        var gameLabel1 = this.game.add.text(0, 0, "Repeat Level?", {
-            font: '40px FingerPaint-Regular',
-            fill: '#ffffff',
-            fontWeight: 'normal',
-            align: 'center'
-        });
-
-        gameLabel1.update();
-        gameLabel1.x = (game.width / 2) - (gameLabel.width / 2);
-        gameLabel1.y = gameLabel.y + gameLabel.height + 20;
-
-        // -----------
-
-        var gameLabel2 = this.game.add.text(0, 0, "Return to Menu", {
-            font: '40px FingerPaint-Regular',
-            fill: '#ffffff',
-            fontWeight: 'normal',
-            align: 'center'
-        });
-
-        gameLabel2.update();
-        gameLabel2.x = (game.width / 2) - (gameLabel2.width / 2);
-        gameLabel2.y = gameLabel1.y + gameLabel1.height + 20;
-
-        gameLabel2.inputEnabled = true;
-        gameLabel2.events.onInputDown.add(function () {
-            //this.game.state.start('MainMenu');
-            transitionPlugin.to('MainMenu');
-        }, this);
-
-        gameLabel1.inputEnabled = true;
-        gameLabel1.events.onInputDown.add(function () {
-            //this.game.state.start('Game');
-            transitionPlugin.to('Game');
-        }, this);
-
-        modalGroup.add(modal);
-        modalGroup.add(modalPanel);
-        modalGroup.add(gameLabel);
-        modalGroup.add(gameLabel1);
-        modalGroup.add(gameLabel2);
-
-    } else if (type === "level") {
-
-        var modalHeader = game.add.image((game.width / 2) - (305 / 2), modalPanel.y + 40, "modalHeader");
-
-        // -----------
-
-        var gameLabel2 = this.game.add.text(0, 0, "Return to Menu", {
-            font: '40px FingerPaint-Regular',
-            fill: '#ffffff',
-            fontWeight: 'normal',
-            align: 'center'
-        });
-
-        gameLabel2.update();
-        gameLabel2.x = (game.width / 2) - (gameLabel2.width / 2);
-        gameLabel2.y = modalHeader.y + modalHeader.height + 20;
-
-        // ------------
-
-        var scoreLabel = this.game.add.text(0, 0, "Score: " + reg.score, {
-            font: '40px FingerPaint-Regular',
-            fill: '#ffffff',
-            fontWeight: 'normal',
-            align: 'center'
-        });
-
-        scoreLabel.update();
-        scoreLabel.x = (game.width / 2) - (scoreLabel.width / 2);
-        scoreLabel.y = gameLabel2.y + gameLabel2.height + 20;
-
-        // ------------
-
-        var modalNext = game.add.image((game.width / 2) - (244 / 2), scoreLabel.y + scoreLabel.height + 30, "modalNext");
-
-        gameLabel2.inputEnabled = true;
-        gameLabel2.events.onInputDown.add(function () {
-            //this.game.state.start('MainMenu');
-            transitionPlugin.to('MainMenu');
-        }, this);
-
-        modalNext.inputEnabled = true;
-        modalNext.events.onInputDown.add(function () {
-
-            reg.currentLevel += 1;
-            transitionPlugin.to('Levels');
-
-        }, this);
-
-        /*gameLabel.inputEnabled = true;
-        gameLabel.events.onInputDown.add(function () {
-            //this.game.state.start('Game');
-            transitionPlugin.to('Game');
-        }, this);*/
-
-        modalGroup.add(modal);
-        modalGroup.add(modalPanel);
-        modalGroup.add(modalHeader);
-        //modalGroup.add(gameLabel);
-        modalGroup.add(gameLabel2);
-        modalGroup.add(scoreLabel);
-        modalGroup.add(modalNext);
-    } else if (type === "no-level") {
-        var modalHeader = game.add.image((game.width / 2) - (305 / 2), modalPanel.y + 40, "modalHeader");
-
-        // -----------
-
-        var gameLabel2 = this.game.add.text(0, 0, "Return to Menu", {
-            font: '40px FingerPaint-Regular',
-            fill: '#ffffff',
-            fontWeight: 'normal',
-            align: 'center'
-        });
-
-        gameLabel2.update();
-        gameLabel2.x = (game.width / 2) - (gameLabel2.width / 2);
-        gameLabel2.y = modalHeader.y + modalHeader.height + 20;
-
-        // ------------
-
-        var scoreLabel = this.game.add.text(0, 0, "Score: " + reg.score, {
-            font: '40px FingerPaint-Regular',
-            fill: '#ffffff',
-            fontWeight: 'normal',
-            align: 'center'
-        });
-
-        scoreLabel.update();
-        scoreLabel.x = (game.width / 2) - (scoreLabel.width / 2);
-        scoreLabel.y = gameLabel2.y + gameLabel2.height + 20;
-
-        // ------------
-
-        gameLabel2.inputEnabled = true;
-        gameLabel2.events.onInputDown.add(function () {
-            //this.game.state.start('MainMenu');
-            transitionPlugin.to('MainMenu');
-        }, this);
-
-
-        modalGroup.add(modal);
-        modalGroup.add(modalPanel);
-        modalGroup.add(modalHeader);
-        modalGroup.add(gameLabel2);
-        modalGroup.add(scoreLabel);
-    }
-
-    modalGroup.visible = false;
-
-    reg.modal[type] = modalGroup;
-}
 
 /**
  * [getExplosion Create explosion]
@@ -377,8 +163,7 @@ function getExplosion(x, y, scale) {
  * @return {[type]}      [description]
  */
 function showModal(type) {
-    game.world.bringToTop(reg.modal[type]);
-    reg.modal[type].visible = true;
+
 }
 
 /**
@@ -395,39 +180,20 @@ function hideModal(type) {
  * @return {[type]} [description]
  */
 function saveScore() {
-
-    // enemies x10 and the remaining fear as bonus
-    var remainingFear = (reg.hud.width-34) - Math.round(reg.fearBar.width);
-    reg.score = Number(reg.levelEditor["level" + reg.currentLevel].enemies * 10) + remainingFear;
-
-    if (Number(reg.levelEditor["level" + reg.currentLevel].bestScore) < reg.score) {
-        reg.levelEditor["level" + reg.currentLevel].bestScore = reg.score;
-    }
-
-    localStorage.setItem("nightcast-levels", JSON.stringify(reg.levelEditor));
+    localStorage.setItem("tempgame", JSON.stringify(reg.mainScore));
 }
 
 
 
 /// EVENT LISTENERS
 
-function attackGhost(e) {
-    var item = String(e.id);
-    e.tweenObj.stop();
-    e.smallTween.stop();
-
-    var scale = e.scale.x + 0.2;
-    getExplosion( (Math.round(e.x) + (Math.round(e.width/2)-(128 * scale)) ), Math.round(e.y) + (Math.round(e.height/2)- (128 * scale)), scale );
-    e.kill();
-    enemiesDestroyed += 1;
-}
 
 /**
  * [resetAchievements description]
  * @return {[type]} [description]
  */
 function resetAchievements() {
-    reg.levelEditor = JSON.parse('{"level1":{"levelName":"Level - 1","status":"open","bestScore":"0","enemies":"25","minInterval":1000,"maxInterval":3600,"fearPerFrame":0.06},"level2":{"levelName":"Level - 2","status":"closed","bestScore":"0","enemies":"38","minInterval":1100,"maxInterval":3200,"fearPerFrame":0.08},"level3":{"levelName":"Level - 3","status":"closed","bestScore":"0","enemies":"45","minInterval":1000,"maxInterval":3000,"fearPerFrame":0.09},"level4":{"levelName":"Level - 4","status":"closed","bestScore":"0","enemies":"55","minInterval":1200,"maxInterval":3000,"fearPerFrame":0.1},"level5":{"levelName":"Level - 5","status":"closed","bestScore":"0","enemies":"80","minInterval":800,"maxInterval":3000,"fearPerFrame":0.15}}');
+    reg.levelEditor = JSON.parse('');
 }
 
 // Setup game

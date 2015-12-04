@@ -24,8 +24,6 @@ GAME.Scores.prototype = {
         ///////////////////////////
 
 
-
-
         },
         hide: function () {
 
