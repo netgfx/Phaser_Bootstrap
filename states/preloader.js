@@ -35,7 +35,7 @@ GAME.Preloader.prototype = {
         this.game.load.image("menuNoSound", "assets/menuNoSound.png");*/
 
         // BACKGROUNDS
-        this.game.load.image("hellBG", "assets/backgrounds/hell.png");
+
 
         // OBSTACLES
 
@@ -46,8 +46,10 @@ GAME.Preloader.prototype = {
 
 
         /// init trap gallery
-        reg.trapSlider = new phaseSlider(game);
+        //reg.trapSlider = new phaseSlider(game);
 
+        this.game.load.pack("general", "assets/files.json", null, this);
+        this.game.load.image("bg", "assets/bg.png");
 
         //this.load.audio('track', ['assets/track.mp3']);
         /*
@@ -67,10 +69,9 @@ function getLocalSave() {
 
     var result = localStorage.getItem("template");
 
-    if(result === null || result === undefined) {
+    if (result === null || result === undefined) {
         localStorage.setItem("template", JSON.stringify(reg.levelEditor));
-    }
-    else {
+    } else {
         //reg.levelEditor = JSON.parse(result);
     }
 }
@@ -78,10 +79,9 @@ function getLocalSave() {
 function getLocalSaveScore() {
     var result = localStorage.getItem("template_score");
 
-    if(result === null || result === undefined) {
+    if (result === null || result === undefined) {
         localStorage.setItem("template_score", 0);
-    }
-    else {
+    } else {
         reg.mainScore = JSON.parse(result);
     }
 }

@@ -1,0 +1,19 @@
+{
+    "general": [
+        {
+            "type": "image",
+            "key": "test",
+            "url": "assets/test.jpg",
+            "overwrite": true
+        }
+    ],
+    "sounds": [
+    ],
+    "meta": {
+        "generated": "1401380327373",
+        "version": "1.0",
+        "app": "Phaser Asset Packer",
+        "url": "http://phaser.io",
+        "copyright": "Photon Storm Ltd. 2014"
+    }
+}

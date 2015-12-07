@@ -1,0 +1,98 @@
+{
+    "general": [
+        {
+            "type": "image",
+            "key": "test",
+            "url": "assets/test.jpg",
+            "overwrite": true
+        }
+        /*{
+            "type": "text",
+            "key": "readme",
+            "url": "assets/sprites/readme.txt",
+            "overwrite": false
+        },*/
+        /*{
+            "type": "json",
+            "key": "levelData",
+            "url": "assets/level1.json",
+            "overwrite": false
+        },*/
+        /*{
+            "type": "script",
+            "key": "webfonts",
+            "url": "http://blah.com/font.js",
+            "callback": "parseFontLoader"
+        },*/
+        /*{
+            "type": "spritesheet",
+            "key": "webfonts",
+            "url": "assets/sprites/mummy.png",
+            "frameWidth": 32,
+            "frameHeight": 64,
+            "frameMax": 10,
+            "margin": 0,
+            "spacing": 0
+        },*/
+        /*{
+            "type": "tilemap",
+            "key": "level1",
+            "url": "assets/tilemaps/level1.csv",
+            "data": null,
+            "format": "CSV"
+        },*/
+        /*{
+
+            "type": "bitmapFont",
+            "key": "desyrel",
+            "textureURL": "assets/fonts/bitmapFonts/desyrel.png",
+            "atlasURL": "assets/fonts/bitmapFonts/desyrel.xml",
+            "atlasData": null,
+            "xSpacing": 0,
+            "ySpacing": 0
+        },*/
+        /*{
+
+            "type": "atlasJSONHash",
+            "key": "map",
+            "textureURL": "assets/sprites/map.png",
+            "atlasURL": "assets/sprites/map.json",
+            "atlasData": null
+        },*/
+       /* {
+
+            "type": "atlas",
+            "key": "map",
+            "textureURL": "assets/sprites/map.png",
+            "atlasURL": "assets/sprites/map.json",
+            "atlasData": null,
+            "format": "TEXTURE_ATLAS_JSON_ARRAY"
+        }*/
+    ],
+    /*  Here's an example of another section within the Asset Pack. */
+    "sounds": [
+       /* {
+
+            "type": "audio",
+            "key": "boden",
+            "urls": ["assets/audio/bodenstaendig_2000_in_rock_4bit.mp3", "assets/audio/bodenstaendig_2000_in_rock_4bit.ogg"],
+            "autoDecode": true
+        }, */
+        /*{
+
+            "type": "audiosprite",
+            "key": "dialog",
+            "urls": [ "assets/audiosprites/dialog.m4a", "assets/audiosprites/dialog.oga" ],
+            "jsonURL": "assets/audiosprites/dialog.json",
+            "jsonData": null,
+            "autoDecode": true
+        }*/
+    ],
+    "meta": {
+        "generated": "1401380327373",
+        "version": "1.0",
+        "app": "Phaser Asset Packer",
+        "url": "http://phaser.io",
+        "copyright": "Photon Storm Ltd. 2014"
+    }
+}

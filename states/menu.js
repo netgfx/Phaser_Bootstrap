@@ -5,7 +5,8 @@ GAME.Menu = function(game) {
 
 GAME.Menu.prototype = {
     create: function() {
-        //this.add.image(0, 0, 'menuBG');
+        this.add.image(0, 0, 'bg');
+       // this.add.image(0, 0, 'test'); // asset from pack
 
         /*this.startButton = this.add.button((game.width/2) - 216, 300, 'menuPlay', this.startGame, this, 1, 0, 2);
         this.infoButton = this.add.button((game.width/2) - 170, this.startButton.y + 110, 'menuScores', this.startScores, this, 1, 0, 2);
@@ -34,6 +35,7 @@ GAME.Menu.prototype = {
             this.nosoundButton.alpha = 1;
         }
         */
+
     },
     startGame: function () {
         game.state.start('Game');
